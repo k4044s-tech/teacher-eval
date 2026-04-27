@@ -2,6 +2,7 @@
 <html dir="rtl" lang="ar">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>نموذج تقييم أداء المعلم</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
@@ -127,6 +128,50 @@ input[type=text] {
   font-size:13px; cursor:pointer; font-family:inherit;
 }
 .print-btn:hover { background:#1a5c38; }
+
+/* === RESPONSIVE MOBILE === */
+@media screen and (max-width: 800px) {
+  body { padding: 0; background:#fff; }
+  .page-wrap {
+    width: 100% !important;
+    padding: 4mm 3mm !important;
+    box-shadow: none !important;
+  }
+  .logo-wrap img { height: 14mm; }
+  .form-title { font-size: 11pt; margin: 2mm 0 3mm; }
+
+  /* Info table - stack on mobile */
+  .info-table { font-size: 8pt; }
+  .info-table td { padding: 2px 4px; }
+
+  /* Eval table - make scrollable */
+  .eval-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 3mm;
+  }
+  .eval-table { font-size: 7pt; min-width: 600px; }
+  .eval-table td, .eval-table th { padding: 1px 2px; }
+  .item-cell { font-size: 7pt; padding: 1px 3px; }
+  .gscore { width: 16px; font-size: 8pt; }
+  .score-cb { width: 16px; }
+  .score-cb input[type=checkbox] { width: 12px; height: 12px; }
+  .section-cell { font-size: 6pt; width: 16px; }
+  .desc-cell { width: 55px; }
+
+  /* Notes */
+  .notes-block { padding: 2mm 3mm; }
+  .notes-lbl { font-size: 9pt; }
+  .notes-textarea { font-size: 9pt; }
+
+  /* Signature */
+  .sig-table td { display: block; width: 100%; border-left: none; border-bottom: 1px solid #999; padding: 6px; }
+  .sig-table td:last-child { border-bottom: none; }
+  .sig-input { width: 70%; }
+
+  /* Print button */
+  .print-btn { width: 90%; font-size: 15px; padding: 12px; margin: 10px auto; }
+}
 </style>
 </head>
 <body>
@@ -175,7 +220,7 @@ input[type=text] {
     </tr>
   </table>
 
-  <table class="eval-table">
+  <div class="eval-table-wrap"><table class="eval-table">
     <thead>
       <tr>
         <th class="gh" rowspan="2" style="width:18px">عناصر<br>التقييم</th>
@@ -192,6 +237,7 @@ input[type=text] {
     <tbody id="evalBody"></tbody>
   </table>
 
+  </div><!-- end eval-table-wrap -->
   <div class="notes-wrap no-break">
     <div class="notes-block">
       <div class="notes-lbl">الإيجابيات/</div>
